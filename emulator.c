@@ -87,7 +87,7 @@ void assemble(char* code, int32_t *memory) {
     }
 
     // If we reach this point, We are expecting a valid instruction
-    instruction = memory + current_instruction;
+    instruction = (Instruction*)(memory + current_instruction);
     instruction->op = Invalid;
 
     // Process opcode
@@ -151,7 +151,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   int registers[6] = {0,0,0,0,0,0};
-  execute(halt_instructions, registers);
+  execute((void*)halt_instructions, registers);
   test_int_equal(registers[IP], 0);
   test_int_equal(registers[R0], 0);
   test_int_equal(registers[R1], 0);
@@ -165,7 +165,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(load_imm_instructions, registers);
+  execute((void*)load_imm_instructions, registers);
   test_int_equal(registers[IP], 3);
   test_int_equal(registers[R0], 1);
   test_int_equal(registers[R1], 80);
@@ -179,7 +179,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(add_instructions, registers);
+  execute((void*)add_instructions, registers);
   test_int_equal(registers[IP], 3);
   test_int_equal(registers[R0], 42);
   test_int_equal(registers[R1], 142);
@@ -195,7 +195,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(addi_instructions, registers);
+  execute((void*)addi_instructions, registers);
   test_int_equal(registers[IP], 5);
   test_int_equal(registers[R0], 3);
   test_int_equal(registers[R1], 51);
@@ -214,7 +214,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(bitwise_instructions, registers);
+  execute((void*)bitwise_instructions, registers);
   test_int_equal(registers[IP], 8);
   test_int_equal(registers[R0], 1);
   test_int_equal(registers[R1], 1);
@@ -230,7 +230,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(jump_instructions, registers);
+  execute((void*)jump_instructions, registers);
   test_int_equal(registers[IP], 3);
   test_int_equal(registers[R0], 1);
   test_int_equal(registers[R1], 0);
@@ -245,7 +245,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(beq_instructions, registers);
+  execute((void*)beq_instructions, registers);
   test_int_equal(registers[IP], 4);
   test_int_equal(registers[R0], 1);
   test_int_equal(registers[R1], 1);
@@ -260,7 +260,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(beq2_instructions, registers);
+  execute((void*)beq2_instructions, registers);
   test_int_equal(registers[IP], 3);
   test_int_equal(registers[R0], 1);
   test_int_equal(registers[R1], 2);
@@ -275,7 +275,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(move_instructions, registers);
+  execute((void*)move_instructions, registers);
   test_int_equal(registers[IP], 4);
   test_int_equal(registers[R0], 100);
   test_int_equal(registers[R1], 100);
@@ -296,7 +296,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(ext_instructions, registers);
+  execute((void*)ext_instructions, registers);
   test_int_equal(registers[IP], 10);
   test_int_equal(registers[R0], 1);
   test_int_equal(registers[R1], 201);
@@ -318,7 +318,7 @@ int main() {
     {Halt, 0, 0, 0}
   };
   memset(registers, 0, sizeof(registers));
-  execute(loop_instructions, registers);
+  execute((void*)loop_instructions, registers);
   test_int_equal(registers[IP], 9);
   test_int_equal(registers[R0], 0);
   test_int_equal(registers[R1], -1);
