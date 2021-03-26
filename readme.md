@@ -51,6 +51,10 @@ This simple processor supports the following operations:
 8. Xor - Bitwise `xor` the value from register `src` to the value in register `dst` and store the result in `dst`.
 9. Jump - Jump to the absolute position stored in the `immediate` value.
 10. BranchOnEqual - Jump to the absolute position stored in the `immediate` value if and only if the values in the `src` and `dst` registers are equal.
+11. LoadDirect - Load the value stored in the memory location pointed to by `immediate` into the `dst` register.
+12. StoreDirect - Store the value stored in register `src` into the memory location pointed to by the `immediate` value.
+13. LoadIndirect - Load the value stored in the memory location pointed to by the value in `src` into the `dst` register.
+14. StoreIndirect - Store the value stored in register `src` into the memory location pointed to by the value stored in `dst`.
 
 It has no access to external memory or I/O.
 
