@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//#define DEBUG
-
 // Define registers
 typedef enum {R0, R1, R2, R3, R4, IP, FLAGS}  __attribute__ ((__packed__)) Register;
 
