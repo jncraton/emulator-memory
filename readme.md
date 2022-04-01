@@ -1,40 +1,9 @@
-Assembler
-=========
+Emulator Memory
+===============
 
 This project requires the implementation of a very simple processor to execute instructions. The instruction format used is intended to be very simple (while not being space efficient).
 
-The project extends a previous project to add an assembler and a program written in assembly to calculate Fibonacci numbers.
-
-Assembler Overview
-------------------
-
-An [assembler](https://en.wikipedia.org/wiki/Assembly_language#Assembler) translates assembly language code to machine code. Your task is to update your CPU emulator to include an assembler by completing the `assembler` function. In particular, you should be able to convert the included `test-program.asm` to machine code and execute it correctly.
-
-Fibonacci
----------
-
-Once you have a working assembler, you should create a working assembly language program to calculate the nth Fibonacci number that your emulator is able to execute. More details can be found in the `fibonacci.asm` file. Both files can be assembled, executed, and tested by simply calling `make`.
-
-Instruction Format
-------------------
-
-Instructions are all 4 bytes. Each byte represents the following:
-
-- Byte 0: Operation to execute
-- Byte 1: Source register
-- Byte 2: Destination register
-- Byte 3: Immediate Value (signed)
-
-Specifically, instructions are defined as:
-
-```c
-typedef struct {
-  Operation op;
-  Register src;
-  Register dst;
-  signed char immediate;
-} Instruction;
-```
+The project extends a previous project to add memory access and simple program to sum values stored in a memory array.
 
 Operations
 ----------
@@ -56,7 +25,7 @@ This simple processor supports the following operations:
 13. LoadIndirect - Load the value stored in the memory location pointed to by the value in `src` into the `dst` register.
 14. StoreIndirect - Store the value stored in register `src` into the memory location pointed to by the value stored in `dst`.
 
-It has no access to external memory or I/O.
+It has no access to external I/O.
 
 Running
 -------
