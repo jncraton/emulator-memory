@@ -27,6 +27,17 @@ This simple processor supports the following operations:
 
 It has no access to external I/O.
 
+Array Sum
+---------
+
+The array-sum.asm should add a scaler to every item in an array. The values for this code segment are:
+
+- Memory location 100: value to add to each item in the array
+- Memory location 101: length of the array
+- Memory location 102: first array item
+- Memory location 103: second array item
+- Memory location 104+: subsequent array items
+
 Running
 -------
 
