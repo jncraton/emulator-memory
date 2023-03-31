@@ -20,7 +20,7 @@ void assemble(char* code, int32_t *memory) {
     line = strtok(NULL, "\n");
 
     // Handle comments and blank lines
-    if (tokens[0][0] == ';' || tokens[0][0] == '\n') {
+    if (tokens[0][0] == ';' || tokens[0][0] == '\n' || tokens[0][0] == '\0') {
       continue;
     }
 
@@ -37,7 +37,7 @@ void assemble(char* code, int32_t *memory) {
     }
 
     if (instruction->op == Invalid) {
-      printf("Invalid opcode for instruction %d\n", current_instruction);
+      printf("Invalid opcode for instruction %d (%s)\n", current_instruction, tokens[0]);
       exit(1);
     }
 
