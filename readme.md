@@ -75,7 +75,7 @@ Once you have a working assembler, you should create a working assembly language
 Array Sum
 ---------
 
-The array-sum.asm should add a scaler to every item in an array. The values for this code segment are:
+The array-sum.asm should add a single number (a scalar) to every item in an array. The values for this code segment are:
 
 - Memory location 100: value to add to each item in the array
 - Memory location 101: length of the array
