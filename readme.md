@@ -75,13 +75,15 @@ Once you have a working assembler, you should create a working assembly language
 Array Sum
 ---------
 
-The array-sum.asm should add a single number (a scalar) to every item in an array. The values for this code segment are:
+The array-sum.asm program should add a single number (a scalar) to every item in an array. The values for this code segment are:
 
 - Memory location 100: value to add to each item in the array
 - Memory location 101: length of the array
 - Memory location 102: first array item
 - Memory location 103: second array item
 - Memory location 104+: subsequent array items
+
+After the program has run, the value in location `100` should have been added to every item in the array such that the array has been modfied in place.
 
 Running
 -------
