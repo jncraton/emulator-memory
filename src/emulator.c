@@ -404,7 +404,7 @@ int main() {
   test_int_equal(memory[100], 910);
   test_int_equal(memory[101], 0);
 
-  printf("Array Sum Test\n");
+  printf("Array Sum Test Short \n");
 
   load_rom("roms/array-sum.bin", memory);
 
@@ -417,9 +417,38 @@ int main() {
   memory[104] = 3; // Items
 
   emulate_system(memory, registers, TEST_CLOCK);
+  test_int_equal(memory[100], 2);
+  test_int_equal(memory[101], 3);
   test_int_equal(memory[102], 3);
   test_int_equal(memory[103], 4);
   test_int_equal(memory[104], 5);
+
+  printf("Array Sum Test Long \n");
+
+  load_rom("roms/array-sum.bin", memory);
+
+  memset(registers, 0, sizeof(registers));
+
+  memory[100] = 31; // Scalar operand
+  memory[101] = 7;  // Length
+  memory[102] = 1;  // Items
+  memory[103] = -3; // Items
+  memory[104] = 5;  // Items
+  memory[105] = 12; // Items
+  memory[106] = 18; // Items
+  memory[107] = 4;  // Items
+  memory[108] = 9;  // Items
+
+  emulate_system(memory, registers, TEST_CLOCK);
+  test_int_equal(memory[100], 31);
+  test_int_equal(memory[101], 7);
+  test_int_equal(memory[102], 32);
+  test_int_equal(memory[103], 28);
+  test_int_equal(memory[104], 36);
+  test_int_equal(memory[105], 43);
+  test_int_equal(memory[106], 49);
+  test_int_equal(memory[107], 35);
+  test_int_equal(memory[108], 40);
 
   printf("All tests passed\n");
 }
